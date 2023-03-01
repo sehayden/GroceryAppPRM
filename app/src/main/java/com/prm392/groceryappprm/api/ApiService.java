@@ -1,5 +1,6 @@
 package com.prm392.groceryappprm.api;
 
+import static com.prm392.groceryappprm.utils.BaseUrlConstant.baseUrl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.prm392.groceryappprm.model.User;
@@ -16,7 +17,7 @@ public interface ApiService {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.227:8080/")
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
