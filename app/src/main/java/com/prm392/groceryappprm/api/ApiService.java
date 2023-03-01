@@ -13,7 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    //http://localhost:8080/api/customer/login?email=abc@gmail.com&password=123
+    //http://localhost:8080/api/customer/login?email=abc@gmail.com&password=1234
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();

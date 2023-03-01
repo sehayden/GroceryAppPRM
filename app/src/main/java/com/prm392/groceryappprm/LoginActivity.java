@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 .enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        Toast.makeText(LoginActivity.this, "Call API success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Call API successfully", Toast.LENGTH_SHORT).show();
                         User user = response.body();
                         if (user != null && user.getUserName().trim().length() > 0){
                             Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
