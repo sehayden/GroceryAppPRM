@@ -1,7 +1,6 @@
 package com.prm392.groceryappprm.api;
 
 import static com.prm392.groceryappprm.utils.BaseUrlConstant.baseUrl;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.prm392.groceryappprm.model.User;
@@ -13,7 +12,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    //http://localhost:8080/api/customer/login?email=abc@gmail.com&password=1234
+    //http://localhost:8080/api/customer/login?email=abc@gmail.com&password=123
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
