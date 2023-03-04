@@ -29,6 +29,9 @@
             android:id="@+id/nav_my_carts"
             android:icon="@drawable/mycart"
             android:title="My Carts"/>
+        <item
+            android:id="@+id/nav_chat"
+            android:title="Chat"/>
 
     </group>
 
