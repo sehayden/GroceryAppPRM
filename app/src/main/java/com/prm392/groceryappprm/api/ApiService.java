@@ -3,7 +3,10 @@ package com.prm392.groceryappprm.api;
 import static com.prm392.groceryappprm.utils.BaseUrlConstant.baseUrl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.prm392.groceryappprm.model.Product;
 import com.prm392.groceryappprm.model.User;
+
+import java.util.List;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -32,4 +35,7 @@ public interface ApiService {
 
     @POST("api/customer")
     Call<User> registerUser(@Body User user);
+
+    @GET("api/product/popular")
+    Call<List<Product>> getPopularProducts();
 }
