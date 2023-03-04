@@ -1,4 +1,4 @@
-package com.prm392.groceryappprm;
+package com.prm392.groceryappprm.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,14 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.prm392.groceryappprm.MainActivity;
+import com.prm392.groceryappprm.R;
 import com.prm392.groceryappprm.api.ApiService;
 import com.prm392.groceryappprm.model.User;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,RegistrationActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
             }
         });
 
@@ -65,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                         User user = response.body();
                         if (user != null && user.getUserName().trim().length() > 0){
                             Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         } else {
                             Toast.makeText(LoginActivity.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
                         }

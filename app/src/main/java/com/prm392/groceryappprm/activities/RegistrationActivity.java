@@ -1,4 +1,4 @@
-package com.prm392.groceryappprm;
+package com.prm392.groceryappprm.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.prm392.groceryappprm.R;
 import com.prm392.groceryappprm.api.ApiService;
 import com.prm392.groceryappprm.model.User;
 
