@@ -37,7 +37,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         Glide.with(context).load(popularProductList.get(position).getImageUrl()).into(holder.imageView);
         holder.name.setText(popularProductList.get(position).getProductName());
         holder.description.setText(popularProductList.get(position).getProductDescription());
-        holder.rating.setText(popularProductList.get(position).getRating());
+//        holder.rating.setText(popularProductList.get(position).getRating());
         holder.discount.setText(popularProductList.get(position).getDiscount());
 
     }
@@ -55,7 +55,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
             imageView = itemView.findViewById(R.id.pop_img);
             name = itemView.findViewById(R.id.pop_name);
             description = itemView.findViewById(R.id.pop_des);
-            rating = itemView.findViewById(R.id.pop_rat);
+//            rating = itemView.findViewById(R.id.pop_rat);
             discount = itemView.findViewById(R.id.pop_dis);
         }
     }

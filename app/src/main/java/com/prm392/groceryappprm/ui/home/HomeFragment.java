@@ -48,10 +48,7 @@ public class HomeFragment extends Fragment {
         popularProductsRecyclerView = view.findViewById(R.id.pop_rec);
         popularProductsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         popularProducts = new ArrayList<>();
-        popularProducts.add(new Product(1, "h", "h", "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg","h", new BigDecimal("0.1"), 1, "j"));
-        //getPopularProducts();
-        popularAdapter = new PopularAdapter(getContext(), popularProducts);
-        popularProductsRecyclerView.setAdapter(popularAdapter);
+        getPopularProducts();
     }
 
     private void getPopularProducts() {
@@ -62,19 +59,8 @@ public class HomeFragment extends Fragment {
                     public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                         Toast.makeText(getContext(), "Call API successfully", Toast.LENGTH_SHORT).show();
                         popularProducts = response.body();
-                        if (popularProducts != null &&popularProducts.get(0) != null) {
-                            for (int i = 0; i < popularProducts.size(); i++) {
-                                Product product = new Product(popularProducts.get(i).getProductId(),
-                                        popularProducts.get(i).getProductName(),
-                                        popularProducts.get(i).getProductDescription(),
-                                        popularProducts.get(i).getImageUrl(),
-                                        popularProducts.get(i).getDiscount(),
-                                        popularProducts.get(i).getPrice(),
-                                        popularProducts.get(i).getRating(),
-                                        popularProducts.get(i).getProductType());
-                                popularProducts.add(product);
-                            }
-                        }
+                        popularAdapter = new PopularAdapter(getContext(), popularProducts);
+                        popularProductsRecyclerView.setAdapter(popularAdapter);
                     }
 
                     @Override

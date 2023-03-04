@@ -42,4 +42,9 @@
         android:name="com.prm392.groceryappprm.OffersFragment"
         android:label="Offers"
         tools:layout="@layout/fragment_offers" />
+    <fragment
+        android:id="@+id/nav_chat"
+        android:name="com.prm392.groceryappprm.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>
