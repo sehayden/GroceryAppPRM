@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_my_orders, R.id.nav_my_carts)
                 .setDrawerLayout(drawer)
                 .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(navigationView, navController);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 //
 //        View headerView = navigationView.getHeaderView(0);
 //        TextView headerName = headerView.findViewById(R.id.nav_header_name);
@@ -83,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        //return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-        //        || super.onSupportNavigateUp();
-        return true;
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+//        return true;
     }
 }
