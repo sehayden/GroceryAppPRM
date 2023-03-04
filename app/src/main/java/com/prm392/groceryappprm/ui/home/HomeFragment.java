@@ -39,17 +39,21 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
+        popularProductsRecyclerView = root.findViewById(R.id.pop_rec);
+        popularProductsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        popularProducts = new ArrayList<>();
+        getPopularProducts();
 
         return  root;
     }
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        popularProductsRecyclerView = view.findViewById(R.id.pop_rec);
-        popularProductsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        popularProducts = new ArrayList<>();
-        getPopularProducts();
-    }
+//    @Override
+//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//
+//
+//
+//
+//    }
 
     private void getPopularProducts() {
         ApiService.apiService

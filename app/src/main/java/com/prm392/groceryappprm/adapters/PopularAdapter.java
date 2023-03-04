@@ -29,7 +29,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.popular_item, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_item, parent, false));
     }
 
     @Override
@@ -37,7 +37,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         Glide.with(context).load(popularProductList.get(position).getImageUrl()).into(holder.imageView);
         holder.name.setText(popularProductList.get(position).getProductName());
         holder.description.setText(popularProductList.get(position).getProductDescription());
-//        holder.rating.setText(popularProductList.get(position).getRating());
+        holder.price.setText(popularProductList.get(position).getPrice().toString());
         holder.discount.setText(popularProductList.get(position).getDiscount());
 
     }
@@ -49,13 +49,13 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView name, description, rating, discount;
+        TextView name, description, price, discount;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.pop_img);
             name = itemView.findViewById(R.id.pop_name);
             description = itemView.findViewById(R.id.pop_des);
-//            rating = itemView.findViewById(R.id.pop_rat);
+            price = itemView.findViewById(R.id.pop_price);
             discount = itemView.findViewById(R.id.pop_dis);
         }
     }
