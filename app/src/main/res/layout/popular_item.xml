@@ -19,13 +19,13 @@
             android:scaleType="centerCrop"
             android:src="@mipmap/offers3"/>
         <TextView
+            android:id="@+id/pop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/alice"
             android:text="Popular Products"
             android:textSize="19dp"
             android:textStyle="bold"/>
-
         <TextView
             android:id="@+id/pop_des"
             android:layout_width="190dp"
@@ -40,21 +40,34 @@
             android:orientation="horizontal">
             
             <ImageView
+                android:id="@+id/pop_rat"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="3dp"
                 android:src="@drawable/ratingbar"
                 android:layout_marginLeft="-5dp"/>
+
             <TextView
+                android:id="@+id/pop_price"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/alice"
+                android:text="Price"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pop_dis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/alice"
                 android:text="Discount 20% Off"
                 android:textColor="@color/purple_700"
-                android:textStyle="bold"
-                android:layout_gravity="end"
-                android:fontFamily="@font/alice"/>
-            
+                android:textStyle="bold" />
+
+
         </LinearLayout>
 
     </LinearLayout>
