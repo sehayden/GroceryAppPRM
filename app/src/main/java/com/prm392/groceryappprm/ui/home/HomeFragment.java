@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import com.prm392.groceryappprm.R;
 import com.prm392.groceryappprm.activities.LoginActivity;
+import com.prm392.groceryappprm.adapters.CategoryAdapter;
 import com.prm392.groceryappprm.adapters.PopularAdapter;
 import com.prm392.groceryappprm.api.ApiService;
+import com.prm392.groceryappprm.model.Category;
 import com.prm392.groceryappprm.model.Product;
 
 import java.math.BigDecimal;
@@ -30,9 +32,9 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     private RecyclerView popularProductsRecyclerView;
+
     private List<Product> popularProducts;
     PopularAdapter popularAdapter;
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,16 +46,8 @@ public class HomeFragment extends Fragment {
         popularProducts = new ArrayList<>();
         getPopularProducts();
 
-        return  root;
+        return root;
     }
-//    @Override
-//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
-//
-//
-//
-//    }
 
     private void getPopularProducts() {
         ApiService.apiService

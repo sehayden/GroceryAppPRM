@@ -3,6 +3,7 @@ package com.prm392.groceryappprm.api;
 import static com.prm392.groceryappprm.utils.BaseUrlConstant.baseUrl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.prm392.groceryappprm.model.Category;
 import com.prm392.groceryappprm.model.Product;
 import com.prm392.groceryappprm.model.User;
 
@@ -38,4 +39,7 @@ public interface ApiService {
 
     @GET("api/product/popular")
     Call<List<Product>> getPopularProducts();
+
+    @GET("api/category")
+    Call<List<Category>> getCategories();
 }
