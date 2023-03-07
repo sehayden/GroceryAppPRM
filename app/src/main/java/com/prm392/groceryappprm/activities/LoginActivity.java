@@ -1,7 +1,5 @@
 package com.prm392.groceryappprm.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.prm392.groceryappprm.MainActivity;
 import com.prm392.groceryappprm.R;
@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     Button signIn;
     EditText email, password;
     TextView signUp;
+    String emailIntent;
     //ApiService
 
     @Override
@@ -59,9 +60,12 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(Call<User> call, Response<User> response) {
                         Toast.makeText(LoginActivity.this, "Call API successfully", Toast.LENGTH_SHORT).show();
                         User user = response.body();
-                        if (user != null && user.getUserName().trim().length() > 0){
+                        if (user != null && user.getUserName().trim().length() > 0) {
                             Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("Email", user.getEmail());
+                            intent.putExtra("Username", user.getUserName());
+                            startActivity(intent);
                         } else {
                             Toast.makeText(LoginActivity.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
                         }

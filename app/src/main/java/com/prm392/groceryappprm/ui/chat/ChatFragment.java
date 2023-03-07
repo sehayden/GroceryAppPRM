@@ -1,4 +1,4 @@
-package com.prm392.groceryappprm;
+package com.prm392.groceryappprm.ui.chat;
 
 import android.os.Bundle;
 
@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.prm392.groceryappprm.model.Message;
+import com.prm392.groceryappprm.MessageAdapter;
+import com.prm392.groceryappprm.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

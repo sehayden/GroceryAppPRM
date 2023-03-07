@@ -1,4 +1,4 @@
-package com.prm392.groceryappprm;
+package com.prm392.groceryappprm.model;
 
 public class Message {
     public static String SENT_BY_ME = "me";
