@@ -2,6 +2,13 @@ package com.prm392.groceryappprm;
 
 //import static android.os.Build.VERSION_CODES.R;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,21 +18,13 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
 import com.google.android.material.navigation.NavigationView;
-import com.prm392.groceryappprm.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView tvNavHeaderMainEmail;
+    TextView tvNavHeaderMainUsername;
     private AppBarConfiguration mAppBarConfiguration;
-    //FirebaseAuth auth;
-    //FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //auth = FirebaseAuth.getInstance();
-        //database = FirebaseDatabase.getInstance();
-
+        Intent intent = getIntent();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -44,19 +41,23 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_category, R.id.nav_profile, R.id.nav_offers, R.id.nav_new_products,
-                R.id.nav_my_orders, R.id.nav_my_carts, R.id.nav_chat)
+                R.id.nav_my_orders, R.id.nav_my_carts, R.id.nav_chat, R.id.nav_map)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-//
+
+        View headerView = navigationView.getHeaderView(0);
+        tvNavHeaderMainEmail = headerView.findViewById(R.id.nav_header_main_email);
+        tvNavHeaderMainUsername = headerView.findViewById(R.id.nav_header_main_username);
+        tvNavHeaderMainEmail.setText(intent.getStringExtra("Email"));
+        tvNavHeaderMainUsername.setText(intent.getStringExtra("Username"));
+
 //        View headerView = navigationView.getHeaderView(0);
 //        TextView headerName = headerView.findViewById(R.id.nav_header_name);
 //        TextView headerEmail = headerView.findViewById(R.id.nav_header_email);
 //        CircleImageView headerImg = headerView.findViewById(R.id.nav_header_img);
-
-
 
 
     }
