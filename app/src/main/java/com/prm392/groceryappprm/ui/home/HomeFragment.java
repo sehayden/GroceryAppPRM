@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.prm392.groceryappprm.R;
 import com.prm392.groceryappprm.adapters.HomeAdapter;
 import com.prm392.groceryappprm.adapters.PopularAdapter;
+import com.prm392.groceryappprm.adapters.RecommenedAdapter;
 import com.prm392.groceryappprm.api.ApiService;
 import com.prm392.groceryappprm.model.Category;
 import com.prm392.groceryappprm.model.Product;
@@ -29,9 +30,11 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
     PopularAdapter popularAdapter;
     HomeAdapter categoryAdapter;
-    private RecyclerView popularProductsRecyclerView, homeCatRec;
+    RecommenedAdapter recommenedAdapter;
+    private RecyclerView popularProductsRecyclerView, homeCatRec, recommendedProductsRecyclerView;
     private List<Product> popularProducts;
     private List<Category> categories;
+    private List<Product> recommendedProducts;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -41,6 +44,7 @@ public class HomeFragment extends Fragment {
 
         popularProductsRecyclerView = root.findViewById(R.id.pop_rec);
         homeCatRec = root.findViewById(R.id.explorer_rec);
+        recommendedProductsRecyclerView = root.findViewById(R.id.recommended_rec);
 
         popularProductsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         popularProducts = new ArrayList<>();
@@ -49,6 +53,10 @@ public class HomeFragment extends Fragment {
         homeCatRec.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         categories = new ArrayList<>();
         getCategories();
+
+        recommendedProductsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        recommendedProducts = new ArrayList<>();
+        getRecommendedProducts();
 
         return root;
     }
@@ -63,6 +71,26 @@ public class HomeFragment extends Fragment {
                         popularProducts = response.body();
                         popularAdapter = new PopularAdapter(getContext(), popularProducts);
                         popularProductsRecyclerView.setAdapter(popularAdapter);
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Product>> call, Throwable t) {
+                        Toast.makeText(getContext(), "Call API fail", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+    }
+
+    private void getRecommendedProducts() {
+        ApiService.apiService
+                .getRecommendedProducts()
+                .enqueue(new Callback<List<Product>>() {
+                    @Override
+                    public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                        Toast.makeText(getContext(), "Call API successfully", Toast.LENGTH_SHORT).show();
+                        recommendedProducts = response.body();
+                        recommenedAdapter = new RecommenedAdapter(getContext(), recommendedProducts);
+                        recommendedProductsRecyclerView.setAdapter(recommenedAdapter);
                     }
 
                     @Override

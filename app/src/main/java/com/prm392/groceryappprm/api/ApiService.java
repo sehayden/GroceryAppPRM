@@ -16,6 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -39,6 +40,12 @@ public interface ApiService {
     @GET("api/product/popular")
     Call<List<Product>> getPopularProducts();
 
+    @GET("api/product/recommended")
+    Call<List<Product>> getRecommendedProducts();
+
     @GET("api/category")
     Call<List<Category>> getCategories();
+
+    @GET("api/product/{categoryId}")
+    Call<List<Product>> getProductByCategory(@Path(value = "categoryId") int categoryId);
 }
