@@ -1,6 +1,7 @@
 package com.prm392.groceryappprm.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.prm392.groceryappprm.R;
+import com.prm392.groceryappprm.activities.DetailedActivity;
 import com.prm392.groceryappprm.model.Product;
 
 import java.util.List;
@@ -38,6 +40,15 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.ViewHold
         holder.description.setText(list.get(position).getProductDescription());
         holder.price.setText(list.get(position).getPrice().toString());
         holder.rating.setText(String.valueOf(list.get(position).getRating()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailedActivity.class);
+                intent.putExtra("detail", list.get(holder.getAdapterPosition()));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

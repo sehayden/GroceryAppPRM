@@ -1,6 +1,7 @@
 package com.prm392.groceryappprm.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.prm392.groceryappprm.R;
+import com.prm392.groceryappprm.activities.DetailedActivity;
 import com.prm392.groceryappprm.model.Product;
 
 import java.util.List;
@@ -40,6 +42,14 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
         holder.price.setText(popularProductList.get(position).getPrice().toString());
         holder.discount.setText(popularProductList.get(position).getDiscount());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetailedActivity.class);
+                intent.putExtra("detail", popularProductList.get(holder.getAdapterPosition()));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
