@@ -16,6 +16,7 @@ import com.prm392.groceryappprm.MainActivity;
 import com.prm392.groceryappprm.R;
 import com.prm392.groceryappprm.api.ApiService;
 import com.prm392.groceryappprm.model.User;
+import com.prm392.groceryappprm.utils.BaseUrlConstant;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -69,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Call API successfully", Toast.LENGTH_SHORT).show();
                         User user = response.body();
                         if (user != null && user.getUserName().trim().length() > 0) {
+                            BaseUrlConstant.currentUser = user;
                             Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("Email", user.getEmail());

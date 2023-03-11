@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.prm392.groceryappprm.R;
+import com.prm392.groceryappprm.model.CartItem;
 import com.prm392.groceryappprm.model.Product;
 import com.prm392.groceryappprm.utils.BaseUrlConstant;
 
@@ -28,14 +29,6 @@ public class DetailedActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     Product product = null;
-
-    private void addToCartFunc() {
-        if (BaseUrlConstant.cart.size() > 0) {
-
-        } else {
-//            int quantity = spinn
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +62,40 @@ public class DetailedActivity extends AppCompatActivity {
         }
 
         addToCart = findViewById(R.id.add_to_cart);
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (BaseUrlConstant.cart.size() > 0) {
+                    boolean isSameId = false;
+                    for (int i = 0; i < BaseUrlConstant.cart.size(); i++) {
+                        if (BaseUrlConstant.cart.get(i).getId() == product.getProductId()) {
+                            BaseUrlConstant.cart.get(i).setQuantity(BaseUrlConstant.cart.get(i).getQuantity() + totalQuantity);
+                            BaseUrlConstant.cart.get(i).setPrice(product.getPrice().intValue() * BaseUrlConstant.cart.get(i).getQuantity());
+                            isSameId = true;
+                        }
+                    }
+                    if (!isSameId) {
+                        CartItem cartItem = new CartItem();
+                        cartItem.setId(product.getProductId());
+                        cartItem.setName(product.getProductName());
+                        cartItem.setQuantity(totalQuantity);
+                        cartItem.setPrice(product.getPrice().intValue() * totalQuantity);
+                        cartItem.setImg(product.getImageUrl());
+                        cartItem.setUsername(BaseUrlConstant.currentUser.getUserName());
+                        BaseUrlConstant.cart.add(cartItem);
+                    }
+                } else {
+                    CartItem cartItem = new CartItem();
+                    cartItem.setId(product.getProductId());
+                    cartItem.setQuantity(totalQuantity);
+                    cartItem.setName(product.getProductName());
+                    cartItem.setPrice(product.getPrice().intValue() * totalQuantity);
+                    cartItem.setImg(product.getImageUrl());
+                    cartItem.setUsername(BaseUrlConstant.currentUser.getUserName());
+                    BaseUrlConstant.cart.add(cartItem);
+                }
+            }
+        });
 
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +103,7 @@ public class DetailedActivity extends AppCompatActivity {
                 if (totalQuantity < 10) {
                     totalQuantity++;
                     quantity.setText(String.valueOf(totalQuantity));
-                    addToCartFunc();
+
                 }
             }
         });
