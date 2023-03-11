@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.prm392.groceryappprm.R;
 import com.prm392.groceryappprm.model.Product;
+import com.prm392.groceryappprm.utils.BaseUrlConstant;
 
 import java.math.BigDecimal;
 
@@ -27,6 +28,14 @@ public class DetailedActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     Product product = null;
+
+    private void addToCartFunc() {
+        if (BaseUrlConstant.cart.size() > 0) {
+
+        } else {
+//            int quantity = spinn
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +76,7 @@ public class DetailedActivity extends AppCompatActivity {
                 if (totalQuantity < 10) {
                     totalQuantity++;
                     quantity.setText(String.valueOf(totalQuantity));
+                    addToCartFunc();
                 }
             }
         });

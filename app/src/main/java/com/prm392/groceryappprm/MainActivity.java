@@ -20,6 +20,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.prm392.groceryappprm.activities.LoginActivity;
+import com.prm392.groceryappprm.utils.BaseUrlConstant;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        if (BaseUrlConstant.cart == null) {
+            BaseUrlConstant.cart = new ArrayList<>();
+        }
 
         View headerView = navigationView.getHeaderView(0);
         tvNavHeaderMainEmail = headerView.findViewById(R.id.nav_header_main_email);
