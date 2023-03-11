@@ -78,7 +78,7 @@
 
         <LinearLayout
             android:onClick="registration"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -116,19 +116,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias=".3" />
-
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX=".5"
-        android:scaleY=".5"
-        app:layout_constraintBottom_toBottomOf="parent"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

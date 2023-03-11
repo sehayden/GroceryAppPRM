@@ -62,6 +62,9 @@
             android:name=".activities.RegistrationActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.DetailedActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LoginActivity"
             android:exported="false" />
         <activity
