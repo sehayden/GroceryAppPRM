@@ -2,14 +2,14 @@ package com.prm392.groceryappprm;
 
 //import static android.os.Build.VERSION_CODES.R;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,11 +19,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.prm392.groceryappprm.activities.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView tvNavHeaderMainEmail;
     TextView tvNavHeaderMainUsername;
+    SharedPreferences sharedpreferences;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
+        sharedpreferences = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         tvNavHeaderMainEmail = headerView.findViewById(R.id.nav_header_main_email);
         tvNavHeaderMainUsername = headerView.findViewById(R.id.nav_header_main_username);
         tvNavHeaderMainEmail.setText(intent.getStringExtra("Email"));
-        tvNavHeaderMainUsername.setText(intent.getStringExtra("Username"));
+        tvNavHeaderMainUsername.setText(sharedpreferences.getString("username", null));
     }
 
     @Override
@@ -62,24 +65,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-//        if (id == R.id.logout) {
-//            auth.signOut();
-//            startActivity(new Intent(MainActivity.this,HomeActivity.class));
-//            finish();
-//        }
-        return true;
-    }
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-//        return true;
     }
 }

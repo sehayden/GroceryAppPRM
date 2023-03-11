@@ -1,8 +1,9 @@
 package com.prm392.groceryappprm.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Product {
+public class Product implements Serializable {
     int productId;
     String productName;
     String productDescription;
@@ -25,6 +26,7 @@ public class Product {
         this.rating = rating;
         this.productType = productType;
     }
+
     public Product(int productId, String productName, String productDescription, String discount, BigDecimal price, int rating, String productType) {
         this.productId = productId;
         this.productName = productName;
