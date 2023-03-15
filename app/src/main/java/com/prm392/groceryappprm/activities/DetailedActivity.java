@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -70,7 +71,7 @@ public class DetailedActivity extends AppCompatActivity {
                     for (int i = 0; i < BaseUrlConstant.cart.size(); i++) {
                         if (BaseUrlConstant.cart.get(i).getId() == product.getProductId()) {
                             BaseUrlConstant.cart.get(i).setQuantity(BaseUrlConstant.cart.get(i).getQuantity() + totalQuantity);
-                            BaseUrlConstant.cart.get(i).setPrice(product.getPrice().intValue() * BaseUrlConstant.cart.get(i).getQuantity());
+                            BaseUrlConstant.cart.get(i).setPrice(product.getPrice().intValue());
                             isSameId = true;
                         }
                     }
@@ -94,6 +95,7 @@ public class DetailedActivity extends AppCompatActivity {
                     cartItem.setUsername(BaseUrlConstant.currentUser.getUserName());
                     BaseUrlConstant.cart.add(cartItem);
                 }
+                Toast.makeText(getApplicationContext(), "Added to cart successfully !", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -117,6 +119,11 @@ public class DetailedActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

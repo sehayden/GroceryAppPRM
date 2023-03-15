@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/nav_my_carts"
-        android:name="com.prm392.groceryappprm.MyCartsFragment"
+        android:name="com.prm392.groceryappprm.ui.cart.MyCartsFragment"
         android:label="My Carts"
         tools:layout="@layout/fragment_my_carts" />
     <fragment
@@ -50,7 +50,7 @@
 
     <fragment
         android:id="@+id/nav_map"
-        android:name="com.prm392.groceryappprm.MapsFragment"
+        android:name="com.prm392.groceryappprm.ui.map.MapsFragment"
         android:label="Map"
         tools:layout="@layout/fragment_maps" />
 </navigation>

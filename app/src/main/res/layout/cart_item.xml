@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="5dp"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    app:cardCornerRadius="5dp">
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="#B3FB9F"-->
+    <!--        android:padding="8dp"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:weightSum="2">-->
+    <!--            -->
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height=""-->
+    <!--            -->
+    <!--        </LinearLayout>-->
+
+    <!--    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -17,13 +37,13 @@
 
         <ImageView
             android:id="@+id/cart_itemImg"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
             app:srcCompat="@drawable/grocery" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:orientation="vertical">
 
@@ -32,8 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,43 +65,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingHorizontal="5dp"
                     android:text="TextView"
-                    android:textColor="@color/black"
-                    android:paddingHorizontal="5dp"/>
+                    android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/cart_addBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="+"
-                    android:background="@color/purple_700"/>
+                    android:background="@color/purple_700"
+                    android:text="+" />
 
                 <TextView
                     android:id="@+id/cart_itemQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingHorizontal="5dp"
                     android:text="TextView"
-                    android:textColor="@color/black"
-                    android:paddingHorizontal="5dp"/>
+                    android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/cart_removeBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="-"
-                    android:background="@color/purple_700"/>
+                    android:background="@color/purple_700"
+                    android:text="-" />
 
                 <TextView
                     android:id="@+id/cart_itemTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingHorizontal="5dp"
                     android:text="TextView"
-                    android:textColor="@color/black"
-                    android:paddingHorizontal="5dp"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
