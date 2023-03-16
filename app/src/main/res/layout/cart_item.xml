@@ -58,20 +58,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="8">
 
                 <TextView
                     android:id="@+id/cart_itemPrice"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:paddingHorizontal="5dp"
                     android:text="TextView"
                     android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/cart_addBtn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/purple_700"
@@ -79,16 +80,16 @@
 
                 <TextView
                     android:id="@+id/cart_itemQuantity"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:paddingHorizontal="5dp"
                     android:text="TextView"
                     android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/cart_removeBtn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@color/purple_700"
@@ -96,9 +97,9 @@
 
                 <TextView
                     android:id="@+id/cart_itemTotal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:paddingHorizontal="5dp"
                     android:text="TextView"
                     android:textColor="@color/black" />

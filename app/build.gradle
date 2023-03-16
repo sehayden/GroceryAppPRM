@@ -40,6 +40,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.5.3'
     implementation 'androidx.navigation:navigation-ui:2.5.3'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation fileTree(dir: 'C:\\Users\\elnga\\OneDrive\\Documents\\code\\school\\zalopay', include: ['*.aar', '*.jar'], exclude: [])
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -58,4 +59,15 @@ dependencies {
 
 //    Rounded ImageView
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    // Zalo
+    implementation("com.squareup.okhttp3:okhttp:4.6.0")
+    implementation("commons-codec:commons-codec:1.14")
+    //RxJava
+    dependencies {
+        implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+        // Because RxAndroid releases are few and far between, it is recommended you also
+        // explicitly depend on RxJava's latest version for bug fixes and new features.
+        // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
+        implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+    }
 }

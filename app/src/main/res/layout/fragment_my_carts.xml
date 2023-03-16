@@ -26,6 +26,15 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp" />
+        <Button
+            android:id="@+id/cart_orderBtn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#C62B2B"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:text="Order"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cart_rec"
