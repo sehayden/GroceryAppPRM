@@ -13,9 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
 import com.prm392.groceryappprm.R;
-import com.prm392.groceryappprm.activities.LoginActivity;
 import com.prm392.groceryappprm.adapters.CartAdapter;
 import com.prm392.groceryappprm.api.ApiService;
 import com.prm392.groceryappprm.model.CartItem;
@@ -24,12 +22,9 @@ import com.prm392.groceryappprm.utils.BaseUrlConstant;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,11 +38,11 @@ public class MyCartsFragment extends Fragment {
 
 
     CartAdapter cartAdapter;
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
     private RecyclerView cartRecyclerView;
     private TextView tvTotalPrice;
     private List<CartItem> cartItemList;
     private Button orderBtn;
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public MyCartsFragment() {
         // Required empty public constructor
@@ -63,7 +58,7 @@ public class MyCartsFragment extends Fragment {
         tvTotalPrice = root.findViewById(R.id.tvTotalPrice);
         orderBtn = root.findViewById(R.id.cart_orderBtn);
         StrictMode.ThreadPolicy policy = new
-        StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         // ZaloPay SDK Init
@@ -83,7 +78,7 @@ public class MyCartsFragment extends Fragment {
             public void onClick(View view) {
                 if (!BaseUrlConstant.cart.isEmpty()) {
                     placeOrder();
-                    payWithZalo();
+                    payWithZalo(root);
                 }
             }
         });
@@ -92,12 +87,20 @@ public class MyCartsFragment extends Fragment {
         return root;
     }
 
-    private void payWithZalo() {
+    private void payWithZalo(View root) {
         CreateOrder orderApi = new CreateOrder();
 
         try {
-            JSONObject data = orderApi.createOrder(String.valueOf(BaseUrlConstant.cart.stream().mapToLong(c -> c.getPrice()).sum()));
+            JSONObject data = orderApi.createOrder(String.valueOf(BaseUrlConstant.cart.stream().mapToLong(c -> c.getPrice()).sum() * 23000));
             String code = data.getString("return_code");
+
+            cartItemList.clear();
+            tvTotalPrice.setText("Total Price: $" + 0);
+
+            cartRecyclerView = root.findViewById(R.id.cart_rec);
+            cartRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
+            cartAdapter = new CartAdapter(getContext(), cartItemList);
+            cartRecyclerView.setAdapter(cartAdapter);
 
 
             if (code.equals("1")) {
@@ -131,7 +134,6 @@ public class MyCartsFragment extends Fragment {
                 .enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-                        Toast.makeText(getContext(), "Call API successfully", Toast.LENGTH_SHORT).show();
                         String responseMsg = response.body();
                     }
 

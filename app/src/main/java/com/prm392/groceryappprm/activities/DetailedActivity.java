@@ -113,7 +113,7 @@ public class DetailedActivity extends AppCompatActivity {
         removeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (totalQuantity > 0) {
+                if (totalQuantity > 1) {
                     totalQuantity--;
                     quantity.setText(String.valueOf(totalQuantity));
                 }

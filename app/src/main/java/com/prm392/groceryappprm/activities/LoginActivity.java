@@ -71,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
                         User user = response.body();
                         if (user != null && user.getUserName().trim().length() > 0) {
                             BaseUrlConstant.currentUser = user;
-                            Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("Email", user.getEmail());
 //                            intent.putExtra("Username", user.getUserName());

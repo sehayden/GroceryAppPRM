@@ -1,7 +1,5 @@
 package com.prm392.groceryappprm.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.prm392.groceryappprm.R;
 import com.prm392.groceryappprm.api.ApiService;
@@ -47,14 +47,16 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (name.getText().toString().trim().length() == 0
-                || email.getText().toString().trim().length() == 0
-                || password.getText().toString().trim().length() == 0) {
+                        || email.getText().toString().trim().length() == 0
+                        || password.getText().toString().trim().length() == 0) {
                     Toast.makeText(RegistrationActivity.this, "Some fields are empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    registerUser();
                 }
-                registerUser();
             }
         });
     }
+
     private void registerUser() {
         User user = new User(name.getText().toString(), email.getText().toString(), password.getText().toString());
         ApiService.apiService
@@ -62,7 +64,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 .enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        Toast.makeText(RegistrationActivity.this, "Call API successfully", Toast.LENGTH_SHORT).show();
                         User user = response.body();
                         if (user.getUserName().trim().length() > 0) {
                             Toast.makeText(RegistrationActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();

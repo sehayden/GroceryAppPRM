@@ -67,7 +67,6 @@ public class HomeFragment extends Fragment {
                 .enqueue(new Callback<List<Product>>() {
                     @Override
                     public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                        Toast.makeText(getContext(), "Call API successfully", Toast.LENGTH_SHORT).show();
                         popularProducts = response.body();
                         popularAdapter = new PopularAdapter(getContext(), popularProducts);
                         popularProductsRecyclerView.setAdapter(popularAdapter);
@@ -87,7 +86,6 @@ public class HomeFragment extends Fragment {
                 .enqueue(new Callback<List<Product>>() {
                     @Override
                     public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                        Toast.makeText(getContext(), "Call API successfully", Toast.LENGTH_SHORT).show();
                         recommendedProducts = response.body();
                         recommenedAdapter = new RecommenedAdapter(getContext(), recommendedProducts);
                         recommendedProductsRecyclerView.setAdapter(recommenedAdapter);
@@ -107,7 +105,6 @@ public class HomeFragment extends Fragment {
                 .enqueue(new Callback<List<Category>>() {
                     @Override
                     public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                        Toast.makeText(getContext(), "Call API successfully", Toast.LENGTH_SHORT).show();
                         categories = response.body();
                         categoryAdapter = new HomeAdapter(getContext(), categories);
                         homeCatRec.setAdapter(categoryAdapter);

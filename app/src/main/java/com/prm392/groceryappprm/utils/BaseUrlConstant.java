@@ -6,7 +6,7 @@ import com.prm392.groceryappprm.model.User;
 import java.util.List;
 
 public class BaseUrlConstant {
-    public static final String baseUrl = "http://192.168.1.150:8080/";
+    public static final String baseUrl = "http://192.168.56.1:8080/";
     public static List<CartItem> cart;
     public static User currentUser;
 }

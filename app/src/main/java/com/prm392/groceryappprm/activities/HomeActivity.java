@@ -1,10 +1,10 @@
 package com.prm392.groceryappprm.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.prm392.groceryappprm.MainActivity;
 import com.prm392.groceryappprm.R;
@@ -16,12 +16,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-//        public void (View view){
-//            startActivity(new Intent(HomeActivity.this, MainActivity.class));
-//        }
-
     }
-    public void main(View view){
+
+    public void main(View view) {
         startActivity(new Intent(HomeActivity.this, MainActivity.class));
     }
 

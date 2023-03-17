@@ -60,7 +60,6 @@ public class ViewAllActivity extends AppCompatActivity {
                 .enqueue(new Callback<List<Product>>() {
                     @Override
                     public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                        Toast.makeText(getApplicationContext(), "Call API successfully", Toast.LENGTH_SHORT).show();
                         productList = response.body();
                         viewAllAdapter = new ViewAllAdapter(context, productList);
                         recyclerView.setAdapter(viewAllAdapter);

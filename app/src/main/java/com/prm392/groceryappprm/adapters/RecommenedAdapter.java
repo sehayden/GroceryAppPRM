@@ -39,7 +39,7 @@ public class RecommenedAdapter extends RecyclerView.Adapter<RecommenedAdapter.Vi
         Glide.with(context).load(list.get(position).getImageUrl()).into(holder.imageView);
         holder.name.setText(list.get(position).getProductName());
         holder.description.setText(list.get(position).getProductDescription());
-        holder.price.setText(list.get(position).getPrice().toString());
+        holder.price.setText("$" + list.get(position).getPrice().toString());
         holder.discount.setText(list.get(position).getDiscount());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
