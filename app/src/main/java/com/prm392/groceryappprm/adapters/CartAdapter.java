@@ -1,6 +1,7 @@
 package com.prm392.groceryappprm.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.prm392.groceryappprm.R;
 import com.prm392.groceryappprm.model.CartItem;
+import com.prm392.groceryappprm.ui.cart.MyCartsFragment;
 import com.prm392.groceryappprm.utils.BaseUrlConstant;
 
 import java.util.List;
@@ -63,6 +65,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                             BaseUrlConstant.cart.get(i).setQuantity(BaseUrlConstant.cart.get(i).getQuantity() - 1);
                             holder.quantity.setText(String.valueOf(cartItemList.get(holder.getAdapterPosition()).getQuantity()));
                             holder.total.setText(String.valueOf(cartItemList.get(holder.getAdapterPosition()).getQuantity() * (int) cartItemList.get(position).getPrice()));
+                        }
+                    }
+                }
+                if (cartItemList.get(holder.getAdapterPosition()).getQuantity() == 0) {
+                    for (int i = 0; i < BaseUrlConstant.cart.size(); i++) {
+                        if (BaseUrlConstant.cart.get(i).getId() == cartItemList.get(holder.getAdapterPosition()).getId()) {
+                            boolean isRemoved = BaseUrlConstant.cart.remove(BaseUrlConstant.cart.get(i));
+                            if (isRemoved) {
+                                cartItemList = BaseUrlConstant.cart;
+                                notifyDataSetChanged();
+                            }
                         }
                     }
                 }
